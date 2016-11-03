@@ -6,10 +6,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import scs2682.midtermproject.AppActivity;
 import scs2682.midtermproject.R;
@@ -18,6 +17,7 @@ import scs2682.midtermproject.data.Contact;
 public class Form extends LinearLayout{
     private TextView firstName;
     private TextView lastName;
+    private Spinner gender;
 
     private AppActivity.Adapter adapter;
     private int positionInContacts = -1;
@@ -45,6 +45,7 @@ public class Form extends LinearLayout{
             // updating a contact
             firstName.setText(contact.firstName);
             lastName.setText(contact.lastName);
+            gender.setSelection(contact.gender);
         }
 
         firstName.requestFocus();
@@ -61,6 +62,7 @@ public class Form extends LinearLayout{
 
         firstName = (TextView) findViewById(R.id.firstName);
         lastName = (TextView) findViewById(R.id.lastName);
+        gender = (Spinner) findViewById(R.id.gender);
 
         //Cancel Click
         findViewById(R.id.cancel).setOnClickListener(new OnClickListener() {
@@ -69,6 +71,7 @@ public class Form extends LinearLayout{
                 adapter.onContactUpdated(null, -1);
                 firstName.setText("");
                 lastName.setText("");
+                gender.setSelection(0);
             }
         });
 
@@ -78,16 +81,18 @@ public class Form extends LinearLayout{
             public void onClick(View view) {
                 String firstNameValue = firstName.getText().toString();
                 String lastNameValue = lastName.getText().toString();
+                Integer genderValue = gender.getSelectedItemPosition();
 
                 //Validation
                 if (TextUtils.isEmpty(firstNameValue) || TextUtils.isEmpty(lastNameValue)) {
                     Toast.makeText(getContext(), "First and Last Name is mandatory", Toast.LENGTH_SHORT);
                 }
                 else {
-                    Contact contact = new Contact(firstNameValue, lastNameValue);
+                    Contact contact = new Contact(firstNameValue, lastNameValue, genderValue);
                     adapter.onContactUpdated(contact, positionInContacts);
                     firstName.setText("");
                     lastName.setText("");
+                    gender.setSelection(0);
                 }
             }
         });

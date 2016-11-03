@@ -11,7 +11,8 @@
         android:hint="@string/first_name"
         android:inputType="textPersonName"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="50dp"
+        android:backgroundTint="@color/buttonColor"/>
     <EditText
         android:id="@+id/lastName"
         android:textSize="20sp"
@@ -19,11 +20,20 @@
         android:inputType="textPersonName"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="50dp"
+        android:backgroundTint="@color/buttonColor"/>
+    <Spinner
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:spinnerMode="dropdown"
+        android:entries="@array/genderlist"
+        android:prompt="@string/gender"/>
     <LinearLayout
         android:orientation="horizontal"
         android:layoutDirection="rtl"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
@@ -31,11 +41,16 @@
             android:text="@string/update"
             android:layout_marginStart="10dp"
             android:layout_width="100dp"
-            android:layout_height="40dp"/>
+            android:layout_height="40dp"
+            android:background="@color/buttonColor"/>
+        <View
+            android:layout_width="5dp"
+            android:layout_height="match_parent" />
         <Button
             android:id="@+id/cancel"
             android:text="@string/cancel"
             android:layout_width="100dp"
-            android:layout_height="40dp"/>
+            android:layout_height="40dp"
+            android:background="@color/buttonColor"/>
     </LinearLayout>
 </scs2682.midtermproject.ui.form.Form>
