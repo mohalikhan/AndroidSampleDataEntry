@@ -3,6 +3,7 @@ package scs2682.midtermproject.ui.form;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
@@ -85,7 +86,7 @@ public class Form extends LinearLayout{
 
                 //Validation
                 if (TextUtils.isEmpty(firstNameValue) || TextUtils.isEmpty(lastNameValue)) {
-                    Toast.makeText(getContext(), "First and Last Name is mandatory", Toast.LENGTH_SHORT);
+                    Toast.makeText(getContext(), "First and Last Name is mandatory", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Contact contact = new Contact(firstNameValue, lastNameValue, genderValue);
@@ -96,5 +97,27 @@ public class Form extends LinearLayout{
                 }
             }
         });
+
+        //Spinner Touch
+        /*gender.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //hide keyboard
+                InputMethodManager inputMethodManager
+                        = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(gender.getWindowToken(), 0);
+                return false;
+            }
+        });*/
+
+        /*gender.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //hide keyboard
+                InputMethodManager inputMethodManager
+                        = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(gender.getWindowToken(), 0);
+            }
+        });*/
     }
 }

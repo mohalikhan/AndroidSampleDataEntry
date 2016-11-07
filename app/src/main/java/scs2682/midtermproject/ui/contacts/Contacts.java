@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 
@@ -16,6 +17,8 @@ import java.util.List;
 import scs2682.midtermproject.AppActivity;
 import scs2682.midtermproject.R;
 import scs2682.midtermproject.data.Contact;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class Contacts extends LinearLayout implements OnContactClickListener{
     private AppActivity.Adapter adapter;
@@ -40,7 +43,7 @@ public class Contacts extends LinearLayout implements OnContactClickListener{
 
     public void updateContact(Contact contact, int positionInContacts) {
         //hide the keyboard
-        InputMethodManager inputMethodManager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager inputMethodManager = (InputMethodManager) getContext().getSystemService(INPUT_METHOD_SERVICE);
         inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
         if (contact != null) {
@@ -87,4 +90,11 @@ public class Contacts extends LinearLayout implements OnContactClickListener{
             adapter.onOpenForm(contact, positionInContacts);
         }
     }
+
+    /*private void showSoftKeyboard(View view) {
+        InputMethodManager inputMethodManager
+                = (InputMethodManager) getContext().getSystemService(INPUT_METHOD_SERVICE);
+        view.requestFocus();
+        inputMethodManager.showSoftInput(view, 0);
+    }*/
 }
