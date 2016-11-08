@@ -109,15 +109,5 @@ public class Form extends LinearLayout{
                 return false;
             }
         });*/
-
-        /*gender.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //hide keyboard
-                InputMethodManager inputMethodManager
-                        = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(gender.getWindowToken(), 0);
-            }
-        });*/
     }
 }
